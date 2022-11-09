@@ -11,7 +11,6 @@ class Solution:
         new_nodes = {}
         q = []
         if not node: return 
-        print(node, q)
         q.append(node)
         copy = Node(node.val)
         new_nodes[node.val] = copy
