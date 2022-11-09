@@ -7,19 +7,12 @@
 class Solution:
     
     def helper(self, root, subRoot):
-        if not root and not subRoot:
-            return True 
-        if not root or not subRoot:
-            return False 
-        if root.val != subRoot.val:
-             return False
-        left = right = True
-        left = self.helper(root.left, subRoot.left)
-        right = self.helper(root.right, subRoot.right)
-        return left and right
+        if root and subRoot:
+            return root.val==subRoot.val and self.helper(root.left, subRoot.left) and self.helper(root.right, subRoot.right)
+        return root is subRoot
     
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        if not root: return 
+        if not root: return False
         if root.val == subRoot.val:
             if self.helper(root, subRoot):
                 return True
