@@ -18,8 +18,7 @@ class Trie:
             if not c in temp:
                 return False
             temp = temp[c]
-        if ";" in temp:
-            return True 
+        return ";" in temp
     
     def startsWith(self, word):
         temp = self.trie
