@@ -1,33 +1,34 @@
 class Trie:
-    
     trie = {}
-    
+
     def __init__(self):
         self.trie = {}
 
-    def insert(self, word: str) -> None:  
-        t = self.trie
+    def insert(self, word):
+        temp = self.trie
         for c in word:
-            if c not in t:
-                t[c] = {}
-            t = t[c]
-        t[";"] = True
-
-    def search(self, word: str) -> bool:
-        t = self.trie
+            if not c in temp:
+                temp[c] = {}
+            temp = temp[c]
+        temp[";"] = True
+    
+    def search(self, word):
+        temp = self.trie
         for c in word:
-            if c not in t:
+            if not c in temp:
                 return False
-            t = t[c]
-        return ";" in t
-
-    def startsWith(self, prefix: str) -> bool:
-        t = self.trie
-        for c in prefix:
-            if c not in t:
+            temp = temp[c]
+        if ";" in temp:
+            return True 
+    
+    def startsWith(self, word):
+        temp = self.trie
+        for c in word:
+            if not c in temp:
                 return False
-            t = t[c]
+            temp = temp[c]
         return True
+            
 
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
